@@ -1,0 +1,29 @@
+version: "3"
+services:
+  apache2-sit1:
+    image: ubuntu/apache2
+    container_name: "mysit1"
+    ports:
+      - 8080:80
+    networks:
+      - myNET
+    volumes:
+      - sit1:/var/wwwt/html
+
+  apache2-sit2:
+    image: ubuntu/apache2
+    container_name: "mysit2"
+    ports:
+      - 80:80
+    networks:
+      - myNET
+    volumes:
+      - sit2:/var/www/html
+
+volumes:
+  sit1:
+  sit2:
+
+networks:
+  myNET:
+    driver: bridge
